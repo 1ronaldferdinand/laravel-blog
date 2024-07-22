@@ -59,10 +59,10 @@
             <table class="table" border="1">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Username</th>
                         <th>Name</th>
                         <th>Role</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
