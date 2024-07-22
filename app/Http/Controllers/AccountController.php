@@ -58,7 +58,7 @@ class AccountController extends Controller
             'role' => 'required|string|max:45',
         ]);
 
-        $account = Account::findOrFail($username);
+        $account = Account::where('username', $username)->first();
         $account->name = $request->name;
         $account->role = $request->role;
 
@@ -73,7 +73,7 @@ class AccountController extends Controller
 
     public function destroy($username)
     {
-        $account = Account::findOrFail($username);
+        $account = Account::where('username', $username)->first();
         $account->delete();
 
         return redirect()->route('accounts.index')->with('success', 'Account deleted successfully.');
