@@ -13,10 +13,10 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/post">Post</a>
+                    <a class="nav-link  active" aria-current="page" href="/post">Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/akun">Akun</a>
+                    <a class="nav-link" href="/akun">Akun</a>
                 </li>
                 @if(session()->has('username'))
                     <li class="nav-item">
@@ -33,11 +33,7 @@
             </div>
         </div>
     </nav>
-    <div class="p-5">
-        <h1>Account Details</h1>
-        <p><strong>Username:</strong> {{ $account->username }}</p>
-        <p><strong>Name:</strong> {{ $account->name }}</p>
-        <p><strong>Role:</strong> {{ $account->role }}</p>
-        <a href="{{ route('accounts.index') }}">Back to List</a>
+    <div class="relative p-5">
+        Hello World
     </div>
 @endsection
