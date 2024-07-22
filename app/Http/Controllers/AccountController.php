@@ -40,13 +40,13 @@ class AccountController extends Controller
 
     public function show($username)
     {
-        $account = Account::findOrFail($username);
+        $account = Account::where('username', $username)->first();
         return view('accounts.show', compact('account'));
     }
 
     public function edit($username)
     {
-        $account = Account::findOrFail($username);
+        $account = Account::where('username', $username)->first();
         return view('accounts.edit', compact('account'));
     }
 

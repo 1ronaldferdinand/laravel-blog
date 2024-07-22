@@ -63,7 +63,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" disabled placeholder="Username">
+                    <input type="text" class="form-control" value="{{ $account->username }}" id="username" name="username" disabled placeholder="Username">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password (leave blank to keep current password)</label>
@@ -72,9 +72,12 @@
                 <div class="mb-3">
                     <label for="role" class="form-label">Role</label>
                     <select name="role" class="form-select" required>
-                        <option selected>Select Role</option>
-                        <option value="admin">Admin</option>
-                        <option value="author">Author</option>
+                        <option value="admin" {{ $account->role == 'admin' ? 'selected' : '' }}>
+                            Admin    
+                        </option>
+                        <option value="author" {{ $account->role == 'author' ? 'selected' : '' }}>
+                            Author
+                        </option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
