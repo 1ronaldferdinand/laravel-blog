@@ -11,7 +11,7 @@
 
 - Clone the repository
 
-`git clone git@github.com:gothinkster/laravel-realworld-example-app.git`
+`git clone https://github.com/1ronaldferdinand/laravel-blog.git`
 
 - Switch to the repo folder
 
