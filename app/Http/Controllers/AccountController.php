@@ -8,15 +8,23 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $accounts = Account::all();
-        return view('accounts.index', compact('accounts'));
+        if ($request->session()->has('username')) {
+            $accounts = Account::all();
+            return view('accounts.index', compact('accounts'));
+        }
+
+        return view('auth.login');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('accounts.create');
+        if ($request->session()->has('username')) {
+            return view('accounts.create');
+        }
+
+        return view('auth.login');
     }
 
     public function store(Request $request)
@@ -38,16 +46,24 @@ class AccountController extends Controller
         return redirect()->route('accounts.index')->with('success', 'Account created successfully.');
     }
 
-    public function show($username)
+    public function show(Request $request, $username)
     {
-        $account = Account::where('username', $username)->first();
-        return view('accounts.show', compact('account'));
+        if ($request->session()->has('username')) {
+            $account = Account::where('username', $username)->first();
+            return view('accounts.show', compact('account'));
+        }
+
+        return view('auth.login');
     }
 
-    public function edit($username)
+    public function edit(Request $request, $username)
     {
-        $account = Account::where('username', $username)->first();
-        return view('accounts.edit', compact('account'));
+        if ($request->session()->has('username')) {
+            $account = Account::where('username', $username)->first();
+            return view('accounts.edit', compact('account'));
+        }
+
+        return view('auth.login');
     }
 
     public function update(Request $request, $username)
@@ -71,11 +87,15 @@ class AccountController extends Controller
         return redirect()->route('accounts.index')->with('success', 'Account updated successfully.');
     }
 
-    public function destroy($username)
+    public function destroy(Request $request, $username)
     {
-        $account = Account::where('username', $username)->first();
-        $account->delete();
+        if ($request->session()->has('username')) {
+            $account = Account::where('username', $username)->first();
+            $account->delete();
+    
+            return redirect()->route('accounts.index')->with('success', 'Account deleted successfully.');
+        }
 
-        return redirect()->route('accounts.index')->with('success', 'Account deleted successfully.');
+        return view('auth.login');
     }
 }
