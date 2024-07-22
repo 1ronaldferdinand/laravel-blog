@@ -35,9 +35,22 @@
     </nav>
     <div class="p-5">
         <h1>Account Details</h1>
-        <p><strong>Username:</strong> {{ $account->username }}</p>
-        <p><strong>Name:</strong> {{ $account->name }}</p>
-        <p><strong>Role:</strong> {{ $account->role }}</p>
-        <a href="{{ route('accounts.index') }}">Back to List</a>
+        <table class="table w-50">
+            <tbody>
+                <tr>
+                    <th scope="row">Username</th>
+                    <td>{{ $account->username }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Name</th>
+                    <td>{{ $account->name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Role</th>
+                    <td>{{ $account->role }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{{ route('accounts.index') }}" class="btn btn-secondary">Back to List</a>
     </div>
 @endsection
